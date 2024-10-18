@@ -43,14 +43,14 @@ model Zap {
 }
 
 model Trigger {
-  id        String           @id @default(uuid())
-  metadata  Json             @default("{}")
-  
+  id       String @id @default(uuid())
+  metadata Json   @default("{}")
+
   triggerId String
   type      AvailableTrigger @relation(fields: [triggerId], references: [id])
-  
-  zapId     String           @unique
-  zap       Zap              @relation(fields: [zapId], references: [id])
+
+  zapId String @unique
+  zap   Zap    @relation(fields: [zapId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -64,12 +64,12 @@ model AvailableTrigger {
 }
 
 model Action {
-  id       String          @id @default(uuid())
-  metadata Json            @default("{}")
-  
-  zapId    String
-  zap      Zap             @relation(fields: [zapId], references: [id])
-  
+  id       String @id @default(uuid())
+  metadata Json   @default("{}")
+
+  zapId String
+  zap   Zap    @relation(fields: [zapId], references: [id])
+
   actionId String
   type     AvailableAction @relation(fields: [actionId], references: [id])
 
@@ -87,8 +87,8 @@ model AvailableAction {
 }
 
 model ZapRun {
-  id    String @id @default(uuid())
-  
+  id String @id @default(uuid())
+
   zapId String
   zap   Zap    @relation(fields: [zapId], references: [id])
 
