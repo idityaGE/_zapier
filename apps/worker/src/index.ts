@@ -32,6 +32,7 @@ async function main() {
         offset: message.offset,
         value: message.value?.toString(),
       });
+
       if (!message.value?.toString()) {
         return;
       }

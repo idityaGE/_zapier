@@ -36,7 +36,7 @@ app.post("/hooks/catch/:userId/:zapId", async (req, res) => {
       message: "Webhook received",
     });
   } catch (error) {
-    console.error("Error creating ZapRun and ZapRunOutbox:", error);
+    console.error("Error creating ZapRun and ZapRunOutbox : ", error);
     res.status(500).send("An error occurred while processing the webhook.");
   }
 });

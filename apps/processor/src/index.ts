@@ -22,7 +22,7 @@ async function main() {
         where: {},
         take: 10,
       });
-      console.log(pendingRows);
+      // console.log(pendingRows);
 
       // The messages array is created by mapping over pendingRows, converting each row into a message with a value that is a JSON string containing the zapRunId and a stage field set to 0.
       producer.send({
