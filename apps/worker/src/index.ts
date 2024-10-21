@@ -121,7 +121,6 @@ async function main() {
       }
 
       console.log("processing done");
-      //
       await consumer.commitOffsets([
         {
           topic: TOPIC_NAME,
