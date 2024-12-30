@@ -1,12 +1,14 @@
-import { BACKEND_URL } from "@/app/config";
 import useStore from "@/store";
-import { HTTP_STATUS_CODES, HTTP_STATUS_MESSAGES } from "@repo/http-status";
 import axios from "axios";
+
 import refreshAccessToken from "./refreshAccessToken";
 import {
   handleAccessTokenErrors,
   handleRefreshTokenErrors,
 } from "./authTokenErrorHandler";
+
+import { BACKEND_URL } from "@/app/config";
+import { HTTP_STATUS_CODES, HTTP_STATUS_MESSAGES } from "@repo/http-status";
 
 const axiosInstance = axios.create({
   baseURL: BACKEND_URL,

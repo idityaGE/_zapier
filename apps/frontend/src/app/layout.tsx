@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Zapier",
+  title: "_zapier ⚡",
   description: "Automate everything with zapier",
 };
 

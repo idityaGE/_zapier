@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "build": "esbuild src/index.ts --platform=node --bundle --outdir=dist",
     "dev": "nodemon"

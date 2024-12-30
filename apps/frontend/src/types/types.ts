@@ -2,6 +2,18 @@ export interface Zap {
   id: string;
   triggerId: string;
   userId: number;
+
+  trigger: {
+    id: string;
+    zapId: string;
+    triggerId: string;
+    type: {
+      id: string;
+      name: string;
+      image: string;
+    };
+  };
+
   actions: {
     id: string;
     zapId: string;
@@ -13,16 +25,6 @@ export interface Zap {
       image: string;
     };
   }[];
-  trigger: {
-    id: string;
-    zapId: string;
-    triggerId: string;
-    type: {
-      id: string;
-      name: string;
-      image: string;
-    };
-  };
 }
 
 export interface AvailableAction {

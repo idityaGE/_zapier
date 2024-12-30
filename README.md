@@ -260,7 +260,7 @@ npx turbo link
 
 ## Authors ✍️
 
-- [Akash](https://github.com/Akash-m-SE)
+- [idityage](https://github.com/idityaGE)
 
 ## Tech Stack 💻
 

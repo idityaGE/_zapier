@@ -1,11 +1,21 @@
-import { Resend } from "resend";
-import { generateOtpTemplate } from "../templates/otp-template";
+import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+
 import { generateNormalEmailTemplate } from "../templates/normal-email-template";
+import { generateOtpTemplate } from "../templates/otp-template";
 
 dotenv.config();
 
-const resend = new Resend(process.env.RESEND_API_KEY as string);
+const transporter = nodemailer.createTransport({
+  service: process.env.MAIL_SERVICE,
+  host: process.env.MAIL_HOST,
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS,
+  },
+});
 
 export async function sendEmail(
   to: string,
@@ -13,10 +23,10 @@ export async function sendEmail(
   type: "otp" | "normal",
 ) {
   try {
-    const data = await resend.emails.send({
-      from: `Akash <onboarding@resend.dev>`,
+    const data = await transporter.sendMail({
+      from: `_zapier ⚡ <${process.env.MAIL_USER}>`,
       to: [to],
-      subject: "Zapier Clone",
+      subject: "_Zapier Official",
       html:
         type === "otp"
           ? generateOtpTemplate(body)

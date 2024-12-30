@@ -1,5 +1,5 @@
 import express from "express";
-import prisma from "./lib/prisma";
+import prisma from "./lib/prisma.js";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -13,6 +13,21 @@ app.post("/hooks/catch/:userId/:zapId", async (req, res) => {
   const userId = req.params.userId;
   const zapId = req.params.zapId;
   const body = req.body;
+
+  try {
+    const user = await prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+    });
+
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+  } catch (error) {
+    console.error("Error fetching user: ", error);
+    return res.status(500).send("An error occurred while fetching the user.");
+  }
 
   try {
     // store in a new db trigger

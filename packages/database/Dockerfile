@@ -22,7 +22,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # First install the dependencies (as they change less often)
-COPY --from=builder /app/out/json/ .
+COPY --from=builder /app/out/json/ .ī
 RUN npm install
 
 # Build the project
