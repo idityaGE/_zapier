@@ -1,5 +1,5 @@
 import express from "express";
-import prisma from "./lib/prisma.js";
+import prisma from "./lib/prisma";
 import dotenv from "dotenv";
 
 dotenv.config();

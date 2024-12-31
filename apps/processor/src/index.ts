@@ -5,6 +5,9 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+const BATCH_SIZE = 10;
+const PROCESSING_INTERVAL = 3000; // 3 seconds
+
 const kafka = new Kafka({
   clientId: "outbox-processor",
   brokers: [KAFKA_BROKER],
@@ -20,16 +23,16 @@ async function main() {
       // The prisma.zapRunOutbox.findMany method fetches up to 10 rows from the zapRunOutbox table in the database. The where: {} clause means it fetches all rows, and the take: 10 clause limits the number of rows to 10.
       const pendingRows = await prisma.zapRunOutbox.findMany({
         where: {},
-        take: 10,
+        take: BATCH_SIZE,
       });
       // console.log(pendingRows);
 
       // The messages array is created by mapping over pendingRows, converting each row into a message with a value that is a JSON string containing the zapRunId and a stage field set to 0.
       producer.send({
         topic: TOPIC_NAME,
-        messages: pendingRows.map((r: any) => {
+        messages: pendingRows.map((row: any) => {
           return {
-            value: JSON.stringify({ zapRunId: r.zapRunId, stage: 0 }),
+            value: JSON.stringify({ zapRunId: row.zapRunId, stage: 0 }),
           };
         }),
       });
@@ -38,16 +41,16 @@ async function main() {
       await prisma.zapRunOutbox.deleteMany({
         where: {
           id: {
-            in: pendingRows.map((x: any) => x.id),
+            in: pendingRows.map((row: any) => row.id),
           },
         },
       });
 
-      await new Promise((r) => setTimeout(r, 3000));
+      await new Promise((resolve) => setTimeout(resolve, PROCESSING_INTERVAL));
     }
   } catch (error) {
     console.log("Error = ", error);
-    await new Promise((r) => setTimeout(r, 3000));
+    await new Promise((resolve) => setTimeout(resolve, PROCESSING_INTERVAL));
   }
 }
 
