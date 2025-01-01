@@ -4,6 +4,7 @@ export function parse(
   startDelimeter = "{",
   endDelimeter = "}",
 ) {
+  //TODO: check for balanced paranthesis
   // You received {comment.amount} momey from {comment.link}
   let startIndex = 0;
   let endIndex = 1;
