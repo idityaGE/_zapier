@@ -1,16 +1,12 @@
 # Zapier Clone
 
-<img src="https://hosted-documents-akash.s3.eu-central-1.amazonaws.com/Zapier+Clone+/Zapier+CLone+github+readme+files/zapierlogo.png" alt="Logo">
+<img src="https://res.cloudinary.com/dwdbqwqxk/image/upload/v1735751888/zapierlogo_f8vf2h.png" alt="Logo">
 
 **Zapier Clone** is a microservices-based automation platform that simplifies and streamlines various workflows. The frontend is developed using Next.js, while Node.js handles the backend services. It features efficient code management with Turborepo, quick task processing with Kafka, and customizable workflows through webhooks, making the platform both powerful and user-friendly.
 
 ## Demo 🎥
 
-https://github.com/user-attachments/assets/3cea80f1-f962-457c-8a28-d92ea7cb5333
-
-If the above player does not work, you can watch the demo video here:
-
-[Watch the Demo Video](https://hosted-documents-akash.s3.eu-central-1.amazonaws.com/Zapier+Clone+/Zapier+CLone+github+readme+files/Zapier+Clone+Demo.mp4)
+[Watch the Demo Video](https://www.youtube.com/watch?v=q4Qq5eNfR3k)
 
 ## Features 🌟
 
@@ -70,25 +66,19 @@ This project uses a monorepo architecture managed by Turborepo. The repository i
 
 ## Screenshots 📸
 
-![App Screenshot](https://hosted-documents-akash.s3.eu-central-1.amazonaws.com/Zapier+Clone+/Zapier+CLone+github+readme+files/mainpage.jpg)
+![App Screenshot](https://res.cloudinary.com/dwdbqwqxk/image/upload/v1735751890/Screenshot_2024-12-31_213824_scqnxm.png)
 
-![App Screenshot](https://hosted-documents-akash.s3.eu-central-1.amazonaws.com/Zapier+Clone+/Zapier+CLone+github+readme+files/login.jpg)
+![App Screenshot](https://res.cloudinary.com/dwdbqwqxk/image/upload/v1735751892/Screenshot_2024-12-31_214140_u8gco6.png)
 
-![App Screenshot](https://hosted-documents-akash.s3.eu-central-1.amazonaws.com/Zapier+Clone+/Zapier+CLone+github+readme+files/signuppage.jpg)
+![App Screenshot](https://res.cloudinary.com/dwdbqwqxk/image/upload/v1735751891/Screenshot_2024-12-31_214128_jnotz3.png)
 
-![App Screenshot](https://hosted-documents-akash.s3.eu-central-1.amazonaws.com/Zapier+Clone+/Zapier+CLone+github+readme+files/forgotpassword.jpg)
+![App Screenshot](https://res.cloudinary.com/dwdbqwqxk/image/upload/v1735751891/Screenshot_2024-12-31_214154_ichj18.png)
 
-![App Screenshot](https://hosted-documents-akash.s3.eu-central-1.amazonaws.com/Zapier+Clone+/Zapier+CLone+github+readme+files/dashboard.jpg)
+![App Screenshot](https://res.cloudinary.com/dwdbqwqxk/image/upload/v1735751891/Screenshot_2024-12-31_214207_xm8hfm.png)
 
-![App Screenshot](https://hosted-documents-akash.s3.eu-central-1.amazonaws.com/Zapier+Clone+/Zapier+CLone+github+readme+files/sendemailselector.jpg)
+<!-- ## Deployment 🚀
 
-![App Screenshot](https://hosted-documents-akash.s3.eu-central-1.amazonaws.com/Zapier+Clone+/Zapier+CLone+github+readme+files/sendsolanaselector.jpg)
-
-![App Screenshot](https://hosted-documents-akash.s3.eu-central-1.amazonaws.com/Zapier+Clone+/Zapier+CLone+github+readme+files/zapcreation.jpg)
-
-## Deployment 🚀
-
-You can access the live version of Zapier Clone here: [Live Demo](https://zapier-frontend-eight.vercel.app/)
+You can access the live version of Zapier Clone here: [Live Demo](https://zapier-frontend-eight.vercel.app/) -->
 
 <a name="environment-setup"></a>
 
@@ -96,25 +86,21 @@ You can access the live version of Zapier Clone here: [Live Demo](https://zapier
 
 You will need to obtain credentials from the respective services:
 
-- **Resend:** Sign in at at [Resend](https://resend.com/) and create an api key to get your `RESEND_API_KEY`.
-
 To run this project, you will need to add the following environment variables to your .env files (templates are provided as .env.example in each package where .env needs to be setup)
 
 - apps/frontend - `NEXT_PUBLIC_FRONTEND_URL` `NEXT_PUBLIC_BACKEND_URL` `NEXT_PUBLIC_HOOKS_URL`
 
-- apps/primary-backend - `PORT` `JWT_PASSWORD` `FRONTEND_URL` `CORS_ORIGIN` `ACCESS_TOKEN_SECRET` `ACCESS_TOKEN_EXPIRY` `REFRESH_TOKEN_SECRET` `REFRESH_TOKEN_EXPIRY` `RESEND_API_KEY`
+- apps/primary-backend - `PORT` `JWT_PASSWORD` `FRONTEND_URL` `CORS_ORIGIN` `ACCESS_TOKEN_SECRET` `ACCESS_TOKEN_EXPIRY` `REFRESH_TOKEN_SECRET` `REFRESH_TOKEN_EXPIRY`
 
 - apps/hooks - `PORT`
 
-- apps/processor - `KAFKA_BROKER`
-
-- apps/worker - `SOL_PRIVATE_KEY` `RESEND_API_KEY` `KAFKA_BROKER`
+- apps/worker - `SOL_PRIVATE_KEY`
 
 - packages/database - `DATABASE_URL`
 
 - packages/kafka-config - `KAFKA-BROKER`
 
-- packages/mailer-config - `GMAIL` `RESEND_API_KEY`
+- packages/mailer-config - `GMAIL` `MAIL_SERVICE` `MAIL_PORT` `MAIL_HOST` `MAIL_USER` `MAIL_PASS`
 
 ## Installation 🔧
 
@@ -278,7 +264,7 @@ npx turbo link
 
 - **Authentication:** Cookie-based authentication with bcrypt for validation
 
-- **Email Service:** Resend (for OTPs and other messages)
+- **Email Service:** NodeMailer (for OTPs and other messages)
 
 - **Containerization:** Docker
 
